@@ -1,0 +1,22 @@
+%h1.text-center Todos List
+%br
+.container
+  .col-md-12
+    %table.table
+      %thead
+        %tr
+          %th Username
+          %th Email
+          %th Status
+          %th.text-center{colspan: "2"} Action
+          
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.username
+            %td= user.email
+            %td= user.status
+            %td= link_to 'Edit', user_edit_path(id: user)
+            / %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+= link_to 'New Todo', new_todo_path, class: "btn col-md-12"

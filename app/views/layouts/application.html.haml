@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title HomifyTest
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Roboto", :rel => "stylesheet"}
+  %body
+    = render partial: "layouts/header"
+    %div{style: "margin-top:5%;"}
+    - flash.each do |key, value|
+      %div{:class => "#{flash_class(key)} flash_msg"}
+        = value
+    = yield
+
+:javascript
+  $(".flash_msg").delay(2000).show().fadeOut("slow");

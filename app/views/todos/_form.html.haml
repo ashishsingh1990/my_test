@@ -1,0 +1,21 @@
+.container.div_pad
+  .col-md-12
+    .form-area
+      = form_for @todo do |f|
+        - if @todo.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@todo.errors.count, "error")} prohibited this todo from being saved:"
+            %ul
+              - @todo.errors.full_messages.each do |message|
+                %li= message
+        %br{:style => "clear:both"}/
+        %h3{:style => "margin-bottom: 25px; text-align: center;"} 
+          = @todo.try(:title).present? ? "Edit Form" : "Todo Form"
+        .form-group
+          = f.text_field :title, class: "form-control col-md-12", :placeholder => "Title",  :required => ""
+        .form-group
+          - campaign_title = @todo.campaign_id.present? ? @todo.campaign.title : ''
+          = f.select :campaign_id, options_for_select(@campaign.map {|m| [m.title, m.id]}, selected: campaign_title),{prompt: "Select campaign"}, class: "form-control col-md-12", :placeholder => "Title",  :required => ""
+        %br
+        = f.submit 'Save', class: "btn btn-primary pull-right"  
+       

@@ -1,0 +1,24 @@
+.container.div_pad
+  .col-md-12
+    .form-area
+      = form_tag user_update_path(id: @user), method: :put do 
+        - if @user.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved:"
+            %ul
+              - @user.errors.full_messages.each do |message|
+                %li= message
+        %br{:style => "clear:both"}/
+        %h3{:style => "margin-bottom: 25px; text-align: center;"} 
+          status update 
+        .form-group
+          %b Username: 
+          = @user.username
+        .form-group
+          %b Email: 
+          = @user.email
+        .form-group
+
+          = select_tag :status, options_for_select(User::USER_STATUS),{prompt: 'Select status', class: "form-control"}
+
+        = submit_tag 'Save', class: "btn btn-primary pull-right"  
