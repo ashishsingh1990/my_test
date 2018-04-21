@@ -20,7 +20,6 @@ class TodosController < ApplicationController
 
   # GET /todos/1/edit
   def edit
-    @campaign = Campaign.all
   end
 
   # POST /todos
@@ -72,6 +71,7 @@ class TodosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
+      @campaign = Campaign.all
       @todo = Todo.find(params[:id])
     end
 

@@ -14,13 +14,11 @@ class HomeController < ApplicationController
 
   def user_update
   	@user = User.find_by(id: params[:id])
-     respond_to do |format|
       if @user.update(status: params[:status])
-        format.html { redirect_to "/users", notice: "User's Status updated successsfullly." }
+         redirect_to "/users", notice: "User status updated successsfullly." 
       else
-        format.html { redirect_to "/users", danger: "Status not updated" }
+        redirect_to "/users", alert: "Status not updated" 
       end
-    end 
   end
 
 end

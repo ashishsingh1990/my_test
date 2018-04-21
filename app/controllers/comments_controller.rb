@@ -6,10 +6,13 @@ class CommentsController < ApplicationController
       if user_role == current_user.role || current_user.expert?
       @comment = @commentable.comments.new comment_params
       @comment.user = current_user
-      @comment.save
-      redirect_to @commentable, notice: "Your comment was successfully posted."
+      if @comment.save
+        redirect_to @commentable, notice: "Your comment was successfully posted."
+      else
+        redirect_to @commentable, alert: "Title can't nil"
+      end  
    else
-      redirect_to @commentable, notice: "You can not comment on this Todo."
+      redirect_to @commentable, alert: "You can not comment on this Todo."
    end
   end
 

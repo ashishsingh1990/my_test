@@ -14,7 +14,11 @@ class User < ApplicationRecord
  
   # default user role is novice if they will singn up
   def novice_user
-    self.update(role: "novice")
+    if expert?
+      self.update(role: "expert")
+    elsif novice?
+      self.update(role: "novice")
+    end
   end 
   
   # Username should be unique.
