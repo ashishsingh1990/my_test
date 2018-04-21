@@ -36,7 +36,7 @@ gem "haml-rails", "~> 1.0"
 gem 'jquery-rails'
 gem 'devise'
 gem "select2-rails"
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
