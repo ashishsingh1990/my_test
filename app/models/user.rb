@@ -16,7 +16,7 @@ class User < ApplicationRecord
   def novice_user
     if expert?
       self.update(role: "expert")
-    elsif novice?
+    elsif
       self.update(role: "novice")
     end
   end 
