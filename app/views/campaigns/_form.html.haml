@@ -9,7 +9,8 @@
               - @campaign.errors.full_messages.each do |message|
                 %li= message
         %br{:style => "clear:both"}/
-        %h3{:style => "margin-bottom: 25px; text-align: center;"} Campagin Form
+        %h3{:style => "margin-bottom: 25px; text-align: center;"} 
+          = @campaign.try(:title).present? ? "Edit Form" : "Campagin Form"
         .form-group
           = f.text_field :title, class: "form-control col-md-12", :placeholder => "Title",  :required => ""
         .form-group

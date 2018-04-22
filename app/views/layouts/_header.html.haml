@@ -6,11 +6,11 @@
     #navbarResponsive.collapse.navbar-collapse
       %ul.navbar-nav.ml-auto
         - if user_signed_in?
-          -if current_user.expert? 
-            %li.nav-item
-              %a.nav-link.js-scroll-trigger{:href => "/campaigns"} Campaign 
+          -if current_user.expert?  
             %li.nav-item
               %a.nav-link.js-scroll-trigger{:href => "/users"} User
+          %li.nav-item
+            %a.nav-link.js-scroll-trigger{:href => "/campaigns"} Campaign
           %li.nav-item
             %a.nav-link.js-scroll-trigger{:href => "/todos"} Todo 
           %li.nav-item.dropdown

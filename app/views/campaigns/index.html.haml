@@ -8,8 +8,8 @@
           %th Title
           %th Tags
           %th Estimated duration
-          %th Created By
-          %th.text-center{colspan: "3"} Action
+          -if current_user.expert?
+            %th.text-center{colspan: "3"} Action 
 
       %tbody
         - @campaigns.each do |campaign|
@@ -17,11 +17,11 @@
             %td.wrap= campaign.title
             %td.wrap= campaign.tags.join(", ")
             %td.wrap= campaign.estimated_duration
-            %td.wrap= campaign.user.username
-            %td= link_to 'Show', campaign
-            %td= link_to 'Edit', edit_campaign_path(campaign)
-            %td= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' }
+            - if current_user.expert?
+              %td= link_to 'Show', campaign
+              %td= link_to 'Edit', edit_campaign_path(campaign)
+              %td= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
-
-= link_to 'Create Campaign', new_campaign_path, class: "btn col-md-12"
+- if current_user.expert?
+  = link_to 'Create Campaign', new_campaign_path, class: "btn col-md-12"
