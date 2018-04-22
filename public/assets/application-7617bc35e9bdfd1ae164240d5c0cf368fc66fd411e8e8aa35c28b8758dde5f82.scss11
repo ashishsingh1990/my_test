@@ -1,0 +1,6 @@
+@import "bootstrap.min.css";
+@import "font-awesome.min.css";
+@import "magnific-popup.css";
+@import "css/creative.min.css";
+@import "custom.css";
+@import "select2";

@@ -1,0 +1,26 @@
+.container.div_pad
+  .col-md-12
+    .form-area
+      = form_for @campaign do |f|
+        - if @campaign.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved:"
+            %ul
+              - @campaign.errors.full_messages.each do |message|
+                %li= message
+        %br{:style => "clear:both"}/
+        %h3{:style => "margin-bottom: 25px; text-align: center;"} Campagin Form
+        .form-group
+          = f.text_field :title, class: "form-control col-md-12", :placeholder => "Title",  :required => ""
+        .form-group
+          = f.select :tags, options_for_select(Campaign::TAGS, selected: @campaign.tags),{prompt: ""}, class: "form-control col-md-12", id: "campaing_tag", :placeholder => "Title", :required => "", multiple: true
+        .form-group
+          = f.date_field :estimated_duration, class: "form-control col-md-12", "place-holder": "Duration"
+        = f.submit 'Save', class: "btn btn-primary pull-right"  
+        
+:javascript
+  $(document).ready(function() {
+    $("#campaing_tag").select2({
+      placeholder: "Please add tags"
+    });
+  });

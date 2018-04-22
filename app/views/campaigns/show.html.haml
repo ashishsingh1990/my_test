@@ -1,0 +1,22 @@
+.text-center
+  %h5 Campaign Details
+%hr
+.container
+  .col-md-6
+    %p
+      %b Title:
+      = @campaign.title
+    %p
+      %b Tags:
+      = @campaign.tags.join(", ")
+    %p
+      %b Estimated duration:
+      = @campaign.estimated_duration
+
+
+    = link_to 'Edit', edit_campaign_path(@campaign), class: "btn"
+    \|
+    = link_to 'Back', campaigns_path, class: "btn"
+  %br
+  = render partial: "comments/comments", locals: {commentable: @campaign}
+  = render partial: "comments/form", locals: {commentable: @campaign}

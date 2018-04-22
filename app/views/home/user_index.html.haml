@@ -1,0 +1,20 @@
+%h1.text-center User List
+%br
+.container
+  .col-md-12
+    %table.table
+      %thead
+        %tr
+          %th Username
+          %th Email
+          %th Status
+          %th.text-center{colspan: "2"} Action
+          
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.username
+            %td= user.email
+            %td= user.status
+            %td= link_to 'Edit', user_edit_path(id: user)
+

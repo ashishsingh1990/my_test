@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  tags: MyText
+  estimated_duration: 2018-04-21 15:05:17
+  user_id: 1
+
+two:
+  title: MyString
+  tags: MyText
+  estimated_duration: 2018-04-21 15:05:17
+  user_id: 1

@@ -1,0 +1,27 @@
+%h1.text-center Todos List
+%br
+.container
+  .col-md-12
+    %table.table
+      %thead
+        %tr
+          %th Title
+          %th Campaign
+          %th Created
+          %th.text-center{colspan: "3"} Action
+          
+      %tbody
+        - @todos.each do |todo|
+          %tr
+            %td= todo.title
+            %td= todo.campaign.title
+            %td= todo.created_at
+            %td= link_to 'Show', todo
+            - if current_user.id == todo.user_id || current_user.expert?
+              %td= link_to 'Edit', edit_todo_path(todo)
+            -else
+              %td
+            - if current_user.expert?
+              %td= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+= link_to 'New Todo', new_todo_path, class: "btn col-md-12"

@@ -1,0 +1,43 @@
+.container.div_pad
+  .col-md-12
+    .form-area
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
+        %br{:style => "clear:both"}/
+        %h3{:style => "margin-bottom: 25px; text-align: center;"} Edit Profile
+
+        .form-group
+          = f.text_field :username, autofocus: true, autocomplete: "username", :placeholder => "username", :required => "", class: "form-control" 
+        .form-group
+          = f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "Email", :required => "", class: "form-control" 
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .form-group
+          %i (leave blank if you don't want to change it)
+          %br/
+          = f.password_field :password, autocomplete: "off", :placeholder => "Password", class: "form-control"
+          - if @minimum_password_length
+            %br/
+            %em
+              = @minimum_password_length
+              characters minimum
+        .form-group
+          = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirm Password", class: "form-control"
+        .form-group
+          %i (we need your current password to confirm your changes)
+          %br/
+          = f.password_field :current_password, autocomplete: "off", :placeholder => "Current Password", :required => "", class: "form-control"
+        - if current_user.expert?
+          .form-group
+            = f.text_field :profession, :placeholder => "Profession", :required => "", class: "form-control" 
+          .form-group
+            = f.text_field :service,  :placeholder => "Service", :required => "", class: "form-control"
+          .form-group
+            = f.select :status, options_for_select(User::USER_STATUS, selected: resource.status),{prompt: 'Select status'}, :placeholder => "Service",  class: "form-control", id: "user_status"
+
+        .actions
+          = f.submit "Update", class: "btn btn-primary pull-right"
+      = link_to "Back", :back, class: "btn"
+%br
+

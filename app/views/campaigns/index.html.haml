@@ -1,0 +1,27 @@
+%h1.text-center Campaigns List
+%br
+.container
+  .col-md-12
+    %table.table
+      %thead
+        %tr
+          %th Title
+          %th Tags
+          %th Estimated duration
+          %th Created By
+          %th.text-center{colspan: "3"} Action
+
+      %tbody
+        - @campaigns.each do |campaign|
+          %tr
+            %td.wrap= campaign.title
+            %td.wrap= campaign.tags.join(", ")
+            %td.wrap= campaign.estimated_duration
+            %td.wrap= campaign.user.username
+            %td= link_to 'Show', campaign
+            %td= link_to 'Edit', edit_campaign_path(campaign)
+            %td= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'Create Campaign', new_campaign_path, class: "btn col-md-12"

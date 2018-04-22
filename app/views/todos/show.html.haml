@@ -1,0 +1,21 @@
+.text-center
+  %h5 Todo Details
+%hr
+.container
+  .col-md-6
+    %p
+      %b
+        Title:
+      %span
+        = @todo.title
+    %p
+      %b 
+        Campaign:
+      %span
+        = @todo.campaign.title
+    = link_to 'Edit', edit_todo_path(@todo)
+    \|
+    = link_to 'Back', todos_path
+  %br
+  = render partial: "comments/comments", locals: {commentable: @todo}
+  = render partial: "comments/form", locals: {commentable: @todo}
