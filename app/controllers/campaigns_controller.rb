@@ -2,6 +2,7 @@ class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :custom_auth
+  
   # GET /campaigns
   # GET /campaigns.json
   def index
