@@ -32,8 +32,8 @@ Rails version
 
 Download or clone Project from Github
 
-- HTTP https://github.com/ashishsingh1990/ashish_homify.git 
-- SSH  git@github.com:ashishsingh1990/ashish_homify.git
+- HTTP https://github.com/ashishsingh1990/my_test.git
+- SSH  git@github.com:ashishsingh1990/my_test.git
 
 Download Project from github and goto project directory follow some step for configure your project on local or remote machine.
 
