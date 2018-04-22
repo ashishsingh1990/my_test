@@ -37,7 +37,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem "select2-rails"
 gem 'rails_12factor', group: :production
-gem 'pg', group: :production
+gem 'pg'
 # gem "figaro"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
